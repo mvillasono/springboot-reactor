@@ -23,6 +23,7 @@ public class ProductoRestController {
   @Autowired
   private ProductoDao productoDao;
 
+  // Devuelve todos los productos en formato JSON de manera reactiva
   @GetMapping
   public Flux<Producto> index() {
 
@@ -36,6 +37,7 @@ public class ProductoRestController {
     return productos;
   }
 
+  // Devuelve un producto por su id
   @GetMapping("/{id}")
   public Mono<Producto> show(@PathVariable String id) {
 

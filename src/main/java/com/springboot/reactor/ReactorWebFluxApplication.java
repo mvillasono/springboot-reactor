@@ -26,14 +26,16 @@ public class ReactorWebFluxApplication implements CommandLineRunner {
 	private static final Logger log = LoggerFactory.getLogger(ReactorWebFluxApplication.class);
 
 	public static void main(String[] args) {
+		// Inicia la aplicación Spring Boot
 		SpringApplication.run(ReactorWebFluxApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		// Elimina la colección 'productos' al iniciar la aplicación
 		reactiveMongoTemplate.dropCollection("productos").subscribe();
 
+		// Crea algunos productos y los guarda en la base de datos de forma reactiva
 		Flux.just(new Producto("Televisor LG", 450.0),
 				new Producto("Refrigerador Samsung", 800.0),
 				new Producto("Lavadora LG", 600.0),

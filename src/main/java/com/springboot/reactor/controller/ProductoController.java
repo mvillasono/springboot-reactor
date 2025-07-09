@@ -23,6 +23,7 @@ public class ProductoController {
   @Autowired
   private ProductoDao productoDao;
 
+  // Muestra la lista de productos en la vista 'listar'
   @GetMapping({ "/listar", "/" })
   public String listar(Model model) {
     Flux<Producto> productos = productoDao.findAll().map(producto -> {
@@ -37,6 +38,7 @@ public class ProductoController {
     return "listar";
   }
 
+  // Muestra la lista de productos usando Data Driver (streaming reactivo)
   @GetMapping("/listar-datadriver")
   public String listarDataDriver(Model model) {
 
@@ -53,6 +55,7 @@ public class ProductoController {
     return "listar";
   }
 
+  // Muestra la lista de productos repitiendo los datos para simular gran volumen
   @GetMapping("/listar-full")
   public String listarFull(Model model) {
 
@@ -67,6 +70,7 @@ public class ProductoController {
     return "listar";
   }
 
+  // Muestra la lista de productos usando chunked transfer encoding
   @GetMapping("/listar-chunked")
   public String listarChunked(Model model) {
 
